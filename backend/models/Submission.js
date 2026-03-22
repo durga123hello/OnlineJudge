@@ -12,12 +12,24 @@ const submissionSchema = new mongoose.Schema({
   code: {
     type: String,
   },
+  language: {
+    type: String,
+    enum: ["python", "cpp", "javascript", "java"],
+    default: "python",
+  },
   status: {
     type: String,
-    enum: ["Accepted", "Wrong Answer", "Error"],
+    enum: ["Pending", "Processing", "Accepted", "Wrong Answer", "Time Limit Exceeded", "Error"],
+    default: "Pending",
   },
   output: {
     type: String,
+  },
+  runtime: {
+    type: String,
+  },
+  failedCase: {
+    type: Object,
   },
 }, { timestamps: true });
 
